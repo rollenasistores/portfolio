@@ -4,9 +4,9 @@
     <section class="flex flex-1 items-center justify-center px-4 mt-6">
       <div class="max-w-3xl text-center">
         <!-- Name and Title -->
-
+        <UBadge>asistoresrlc1@gmail.com</UBadge>
         <h1 class="text-5xl font-bold dark:text-white text-gray-900 mb-4">
-          Rollen Asistores
+          ROLLEN ASISTORES
         </h1>
         <h2 class="text-xl font-medium dark:text-white text-gray-600 mb-6">
           Full Stack Developer
@@ -43,7 +43,7 @@
             View My Work
           </a>
           <a
-            href="#contact"
+            href="mailto:asistoresrlc1@gmail.com"
             class="px-6 py-3 text-white bg-gray-900 font-semibold rounded-md hover:bg-gray-700 transition"
           >
             Contact Me
@@ -69,6 +69,8 @@ const technologies = [
   { name: "Arduino" },
   { name: "Laravel API" },
   { name: "CSS" },
+  { name: "Redis" },
+  { name: "Github Version Control" },
 ];
 
 const projects = [

@@ -52,13 +52,16 @@ const filteredProjects = computed(() => {
       <!-- Left Side Filters -->
       <div class="flex flex-wrap gap-4 items-center">
         <!-- Technology Filter -->
-        <div class="flex flex-wrap gap-2 items-center">
-          <p>Show Archived</p>
+        <div class="flex flex-row gap-3">
+          <p>Show Archives</p>
           <UToggle
             v-model="showArchivedProjects"
             label="Show Archived Projects"
             color="primary"
           />
+        </div>
+        <br />
+        <div class="flex flex-wrap gap-2 items-center">
           <span class="text-gray-600 dark:text-gray-400 mr-2">Filter by:</span>
           <UButton
             v-for="tech in uniqueTechnologies"
