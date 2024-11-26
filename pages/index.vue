@@ -4,7 +4,7 @@
     <section class="flex flex-1 items-center justify-center px-4 mt-6">
       <div class="max-w-3xl text-center">
         <!-- Name and Title -->
-        <UBadge>asistoresrlc1@gmail.com</UBadge>
+        <UBadge>OPEN TO WORK</UBadge>
         <h1 class="text-5xl font-bold dark:text-white text-gray-900 mb-4">
           ROLLEN ASISTORES
         </h1>
