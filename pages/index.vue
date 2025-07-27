@@ -365,8 +365,8 @@ const projects = [
       "Zippr.site is a fast, reliable URL shortening platform that transforms long, complex URLs into clean, shareable links. It offers advanced analytics, custom branding, and real-time tracking—all built without APIs, using Laravel controllers and Laravel Reverb.",
     technologies: [
       "Vue.js",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "Laravel Reverb",
       "Inertia.js",
       "MySQL",
@@ -411,8 +411,8 @@ const projects = [
       "AlerTrack is a safety and equipment monitoring system designed for construction and industrial sites. It features a real-time dashboard that tracks equipment condition, safety scores, worker activity, incidents, compliance, and inventory health.",
     technologies: [
       "Vue.js",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "Node.js",
       "CSS",
       "Inertia.js",
@@ -458,8 +458,8 @@ const projects = [
       "Project Match is a full-stack bidding platform that connects agencies and contractors, with an admin overseeing and verifying payments to ensure secure transactions.",
     technologies: [
       "Vue.js",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "Node.js",
       "CSS",
       "Inertia.js",
@@ -507,8 +507,8 @@ const projects = [
     description: "Full-stack College Scheduling System",
     technologies: [
       "Vue.js",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "Node.js",
       "CSS",
       "Inertia.js",
@@ -552,8 +552,8 @@ const projects = [
       "E-Commerce Personal Project on School (Cavite State University)",
     technologies: [
       "Vue.js",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "Node.js",
       "CSS",
       "Inertia.js",
@@ -593,8 +593,8 @@ const projects = [
     description: "TechLibrary, E-Library System with Student Borrowing System",
     technologies: [
       "Vue.js",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "Node.js",
       "Laravel",
       "CSS",
@@ -640,8 +640,8 @@ const projects = [
       "Barangay Appointment / Document Requesting System with Attendance System using Fingerprint",
     technologies: [
       "Vue.js",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "Node.js",
       "CSS",
       "Inertia.js",
@@ -682,8 +682,8 @@ const projects = [
     description: "Paypark App (with Landing Page) / IOS & Android Application",
     technologies: [
       "Nuxt",
-      "Tailwind CSS",
       "Laravel",
+      "Tailwind CSS",
       "CSS",
       "Inertia.js",
       "Mysql",
