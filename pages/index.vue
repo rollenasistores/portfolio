@@ -2,6 +2,9 @@
   <div
     class="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 pt-24"
   >
+    <!-- Social Media Sidebar -->
+    <SocialMediaBar />
+
     <!-- Hero Section -->
     <section
       ref="heroSection"
@@ -129,9 +132,29 @@
             v-for="(project, index) in projects"
             :key="project.name"
             ref="projectCards"
-            class="project-card scroll-animate group border-b border-gray-100 dark:border-gray-900 pb-16 last:border-b-0 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/30 p-6 transition-all duration-500"
+            class="project-card scroll-animate group border-b border-gray-100 dark:border-gray-900 pb-16 last:border-b-0 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/30 p-6 transition-all duration-500 relative"
             :style="`transition-delay: ${index * 200}ms`"
           >
+            <!-- Year Line -->
+            <div
+              v-if="shouldShowYearLine(index)"
+              class="absolute -top-8 left-0 right-0 flex items-center justify-center"
+            >
+              <div class="flex items-center w-full max-w-xs">
+                <div
+                  class="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"
+                ></div>
+                <span
+                  class="px-4 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-950"
+                >
+                  {{ project.year }}
+                </span>
+                <div
+                  class="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"
+                ></div>
+              </div>
+            </div>
+
             <div
               class="flex flex-col md:flex-row md:items-center justify-between mb-6"
             >
@@ -408,7 +431,7 @@ const projects = [
       url,
       alt: `AlerTrack Screenshot ${index + 1}`,
     })),
-    liveUrl: "https://alertrack.online/", // Replace if you have a separate AlerTrack link
+    liveUrl: "https://alertrack.online/",
     githubUrl: "https://github.com/rollenasistores",
     year: "2025",
     features: [
@@ -773,6 +796,7 @@ const updateTime = () => {
     minute: "2-digit",
   });
 };
+
 const openEmail = () => {
   window.location.href = "mailto:asistoresrlc1@gmail.com";
 };
@@ -795,6 +819,12 @@ const closeProjectDetail = () => {
 
 const scrollToWork = () => {
   document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+};
+
+// Method to determine if year line should be shown
+const shouldShowYearLine = (index) => {
+  if (index === 0) return true; // Always show for first project
+  return projects[index].year !== projects[index - 1].year;
 };
 
 // Animation functions

@@ -254,7 +254,6 @@ useHead({
         email: "asistoresrlc1@gmail.com",
         sameAs: [
           "https://github.com/rollenasistores",
-          // Add your social media profiles here
         ],
         knowsAbout: [
           "JavaScript",
