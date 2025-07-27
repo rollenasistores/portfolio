@@ -124,7 +124,7 @@
               </svg>
             </span>
             <div
-              class="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             ></div>
             <div
               class="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right group-hover:origin-left"
