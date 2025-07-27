@@ -733,7 +733,7 @@
                           class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-900/50 rounded-lg"
                         >
                           <span class="text-gray-700 dark:text-gray-300"
-                            >State Management</span
+                            >Backend Framework</span
                           >
                           <span
                             class="text-green-600 dark:text-green-400 font-medium"

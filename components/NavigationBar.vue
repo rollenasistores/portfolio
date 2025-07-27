@@ -35,7 +35,7 @@
           <NuxtLink
             v-for="(link, index) in mainLinks"
             :key="link.label"
-            :ref="(el) => (navLinks[index] = el)"
+            :ref="(el) => (navLinks[index] = el as HTMLElement)"
             :to="link.to"
             class="nav-item opacity-0 transform -translate-y-4 group relative text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 text-sm font-medium"
             :style="`transition-delay: ${(index + 1) * 150}ms`"
@@ -226,8 +226,8 @@ import { ref, onMounted, onUnmounted, nextTick } from "vue";
 
 // Refs
 const navbar = ref(null);
-const logo = ref(null);
-const actions = ref(null);
+const logo = ref<HTMLElement | null>(null);
+const actions = ref<HTMLElement | null>(null);
 const progressBar = ref(null);
 const navLinks = ref<(HTMLElement | null)[]>([]);
 
@@ -328,16 +328,6 @@ const animateNavItems = () => {
         el.style.opacity = "1";
         el.style.transform = "translateX(0)";
       }, delay);
-    }
-  });
-
-  // Animate nav links
-  navLinks.value.forEach((link, index) => {
-    if (link) {
-      setTimeout(() => {
-        link.style.opacity = "1";
-        link.style.transform = "translateY(0)";
-      }, (index + 1) * 150 + 200);
     }
   });
 };
