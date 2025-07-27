@@ -2,13 +2,88 @@
   <div class="mx-auto">
     <VueLenis root :options="lenisOptions" />
 
+    <!-- Custom Cursor -->
+    <div
+      ref="cursor"
+      class="custom-cursor"
+      :class="{ 'cursor-hover': isHovering }"
+    >
+      <div class="cursor-dot"></div>
+      <div class="cursor-ring"></div>
+    </div>
+
     <NavigationBar />
     <NuxtRouteAnnouncer />
-    <NuxtPage class="bg-grid" />
+    <NuxtPage class="bg-grid cursor-none" />
   </div>
 </template>
 
 <style>
+.cursor-magnetic {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Hide default cursor */
+.cursor-none {
+  cursor: none;
+}
+
+.cursor-none * {
+  cursor: none !important;
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+  opacity: 0.5;
+}
+
+/* Hover state */
+.cursor-hover .cursor-dot {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.cursor-hover .cursor-ring {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.8;
+}
+
+/* Interactive elements cursor styles */
+a,
+button,
+[role="button"],
+input,
+textarea,
+select,
+span {
+  cursor: none !important;
+}
+
 /* Light mode grid */
 .bg-grid {
   background-image: linear-gradient(
@@ -29,12 +104,37 @@
     ),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
+
+/* Dark mode cursor adjustments */
+.dark .cursor-dot {
+  background-color: white;
+}
+
+.dark .cursor-ring {
+  border-color: white;
+}
+
+/* Responsive - hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+
+  .cursor-none,
+  .cursor-none * {
+    cursor: auto !important;
+  }
+}
 </style>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { VueLenis, useLenis } from "lenis/vue";
 import { watch } from "vue";
+
+// Cursor refs
+const cursor = ref<HTMLElement | null>(null);
+const isHovering = ref(false);
 
 // SEO Configuration
 const siteConfig = {
@@ -198,7 +298,24 @@ watch(
   { immediate: true }
 );
 
+// Cursor functionality
+const updateCursor = (e: MouseEvent) => {
+  if (cursor.value) {
+    cursor.value.style.left = e.clientX + "px";
+    cursor.value.style.top = e.clientY + "px";
+  }
+};
+
+const handleMouseEnter = () => {
+  isHovering.value = true;
+};
+
+const handleMouseLeave = () => {
+  isHovering.value = false;
+};
+
 onMounted(() => {
+  // Cal.com integration
   (function (C, A, L) {
     let p = function (a, ar) {
       a.q.push(ar);
@@ -239,5 +356,29 @@ onMounted(() => {
     buttonText: "Schedule a Call",
   });
   Cal.ns["15min"]("ui", { hideEventTypeDetails: false, layout: "month_view" });
+
+  // Custom cursor event listeners
+  document.addEventListener("mousemove", updateCursor);
+
+  // Add hover effects for interactive elements
+  const interactiveElements = document.querySelectorAll(
+    'a, button, [role="button"], input, textarea, select'
+  );
+  interactiveElements.forEach((el) => {
+    el.addEventListener("mouseenter", handleMouseEnter);
+    el.addEventListener("mouseleave", handleMouseLeave);
+  });
+});
+
+onUnmounted(() => {
+  document.removeEventListener("mousemove", updateCursor);
+
+  const interactiveElements = document.querySelectorAll(
+    'a, button, [role="button"], input, textarea, select, span'
+  );
+  interactiveElements.forEach((el) => {
+    el.removeEventListener("mouseenter", handleMouseEnter);
+    el.removeEventListener("mouseleave", handleMouseLeave);
+  });
 });
 </script>
